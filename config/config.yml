@@ -19,7 +19,7 @@ test:
 production:
   <<: *defaults
 
-  opensourced: false
+  opensourced: true
 
   magic_words:
     number: <%= ENV["MAGIC_WORDS_NUMBER"] %>
