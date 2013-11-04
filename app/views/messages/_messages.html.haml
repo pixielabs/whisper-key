@@ -1,0 +1,16 @@
+%p
+  %small
+    You have
+    = succeed "." do
+      = pluralize(current_user.messages.count, "message")
+
+- if @messages.present?
+
+  = paginate @messages
+  
+  .message-list.list-group
+    = render @messages
+- else
+  .message-list
+    %p.no-messages
+      New messages will automatically appear here.

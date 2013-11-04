@@ -1,0 +1,23 @@
+#input-magic-words.container
+  .row
+    .col-md-8.col-md-offset-2
+
+      %h2 What are your recipient's magic words?
+      %p
+        In order to send a message to someone, your recipient first needs to visit WhisperKey,
+        click on 
+        =link_to "Receive a secure message", new_user_path
+        and generate a public / private keypair.
+      %p
+        This will create a set of magic words which the recipient then needs to tell you in a secure way: 
+        either face-to-face or via a trusted 3rd party channel.
+      %p 
+        This process ensures that only your recipient can decode your message.
+      
+      = form_tag search_user_path, method: :post do
+        .row
+          .col-md-10
+            = text_field_tag "magic_words", nil, class: "form-control input-lg", placeholder: "magic words"
+          .col-md-2
+            %button.btn.btn-primary.btn-lg{type: "submit"} Submit
+

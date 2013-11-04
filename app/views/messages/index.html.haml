@@ -1,0 +1,28 @@
+#messages.container
+  .row      
+    .col-md-5
+      %h1
+        Your messages
+        
+      #messages-container
+        = render "messages"
+        :javascript
+          window.pollForMessages();
+
+
+    .col-md-6.col-md-offset-1
+      %h2.has-magic-words
+        Your magic words are 
+        %br/ 
+        - current_user.magic_words.split(" ").each do |word|
+          %span.magic-word= word
+      
+      %p.lead 
+        Tell the sender your magic words for them to be able to send messages to you.
+
+      = link_to "I’m finished with these magic words", user_path, method: :delete, data: {confirm: "Are you sure you are finished? You will not be able to access messages associated with these magic words, and they will be deleted"}
+
+      %br
+
+      %a#show-public-key{href: "#", data: {key: current_user.public_key}} What’s my public key?
+

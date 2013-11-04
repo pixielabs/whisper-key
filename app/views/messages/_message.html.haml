@@ -1,0 +1,5 @@
+= link_to message, class: "list-group-item", title: "Decrypt this message" do
+  %h4.list-group-item-heading.time-ago
+    #{time_ago_in_words(message.created_at)} ago
+  %p.list-group-item-text.encrypted
+    = message.encrypted_data.split("").join("<wbr/>").html_safe

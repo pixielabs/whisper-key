@@ -1,0 +1,8 @@
+- content_for :top_of_body do
+  .navbar
+    .navbar-header
+      = link_to root_path, class: "navbar-brand logo" do
+        WhisperKey
+        %span.domain> .io
+
+= render template: "layouts/base"

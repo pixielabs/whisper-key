@@ -1,0 +1,168 @@
+/*
+ * Typography
+ */ 
+$brandFont:     "courier-prime"
+$brandNormal:   400
+$brandBold:     700
+
+$copyFont:      "freight-sans-pro"
+$copyBook:      400
+$copyMedium:    500
+$copySemibold:  600
+$copyBold:      700
+
+
+/*
+ * Colours
+ */
+$brandDark:     #141e26
+$brandShade1:   #1fa698
+$brandShade2:   #1b8c81
+$brandShade3:   #1d736a
+$brandWhite:    #f2f2f2
+
+
+/*
+ * Bootstrap
+ */
+$font-family-sans-serif:  $copyFont
+$font-family-monospace:   $brandFont
+$font-size-base:          20px
+$headings-font-family:    $copyFont
+$headings-font-weight:    $copySemibold
+$brand-primary:           $brandShade3
+$brand-info:              $brandShade2
+@import bootstrap
+
+@import bourbon
+
+/*
+ *  Global
+ */
+.wf-loading
+  h1, h2, h3, h4, h5, h6, p, .btn
+    visibility: hidden
+
+.magic-word
+  background-color: #ddd
+  border-radius: 0.2em
+  padding: 0 0.4em
+  font-family: $brandFont, monospace
+  font-weight: $brandNormal
+
+.has-magic-words
+  line-height: 1.3
+
+/*
+ *  Landing
+ */
+.jumbotron
+  background-color: $brandShade1
+  
+  .logo
+    color: $brandWhite
+  .lead
+    color: $brandShade3
+
+.logo
+  font-weight: $copySemibold
+  .domain
+    font-weight: $copyMedium
+    color: $brandShade2 !important
+
+#journey-cta
+  text-align: center
+  padding: 1em 0
+  position: relative
+
+#pixies
+  opacity: 0.7
+
+.alert
+  margin-bottom: 0
+  border-radius: 0
+
+/*
+ *  Navbar
+ */
+.navbar
+  border-radius: 0
+  background-color: $brandShade1
+
+  a
+    color: $brandShade2
+
+
+/*
+ *  Generating Key
+ */
+#genrating-key
+  text-align: center
+  margin-top: 60px
+
+@import loader
+
+
+/*
+ *  Messages
+ */
+#messages
+
+  .update-status
+    margin-top: 1em
+    overflow: hidden 
+
+#messages-container
+  clear: both
+
+.message-list
+  .list-group-item
+    max-height: 110px
+    overflow: hidden
+    position: relative
+
+    &::after
+      content: ""
+      display: block
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 100%
+      height: 0
+      padding: 25px 0
+      background-color: red
+      +linear-gradient(rgba(#fff, 0), rgba(#fff, 0.8))
+
+    &:hover::after
+      +linear-gradient(rgba(#F5F5F5, 0), rgba(#F5F5F5, 0.8))
+
+
+
+  .time-ago
+    color: $brandShade2 !important
+  .encrypted  
+    color: #ccc
+    font-family: $brandFont
+
+
+#new-message
+  h2
+    line-height: 1.3
+
+  textarea
+    resize: vertical
+
+/*
+ * Input Magic Words
+ */
+#input-magic-words
+  h2
+    margin-bottom: 1em
+  input[type=text]
+    margin-bottom: 1em
+
+
+
+
+
+

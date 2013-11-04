@@ -1,0 +1,29 @@
+#read-message.container
+  .row
+    .col-md-7.col-md-offset-2
+
+      %h1 Encrypted message:
+      %pre#encrypted= @message.encrypted_data
+
+      %button.btn.btn-primary.btn-lg#decrypt Decrypt with your private key
+
+      #decrypted-area.hidden
+        %h2 Decrypted message:
+        %pre#decrypted
+
+:javascript
+  $(function() {
+
+    $("#decrypt").click(function(e) {
+      var crypt = new JSEncrypt();
+      crypt.setPrivateKey(localStorage.getItem("privatekey"));
+
+      var aesKey = crypt.decrypt("#{@message.encrypted_key}");
+      var decrypted = CryptoJS.AES.decrypt($("#encrypted").text(), aesKey)
+      $("#decrypted").text(decrypted.toString(CryptoJS.enc.Utf8));
+      $("#decrypted-area").removeClass("hidden");
+
+      e.preventDefault();
+    });
+
+  });

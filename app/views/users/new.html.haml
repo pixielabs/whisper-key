@@ -1,0 +1,20 @@
+#genrating-key.container
+  .row
+    .col-md-12
+      %p.lead Generating your public and private keypair 
+      
+      #loader.loader
+        .duo.duo1
+          .dot.dot-a
+          .dot.dot-b
+        .duo.duo2
+          .dot.dot-a
+          .dot.dot-b
+
+      #time-report
+
+= form_for @user, url: user_path do |f|
+  = f.hidden_field :public_key 
+
+:javascript
+  window.generateKeys();

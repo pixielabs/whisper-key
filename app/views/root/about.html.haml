@@ -1,0 +1,78 @@
+#about.container
+  .row
+    .col-md-8.col-md-offset-2
+
+      :markdown
+        ## When receiving messages
+
+        1. Your browser generates a public key and a private key.
+        2. The private key is stored in your browser’s [local storage][].
+        3. The public key is sent to the WhisperKey servers, where it is associated
+           with unique [magic words](#magicwords) which are sent back to your
+           browser.
+
+           You then give your magic words to the person who wants to send you a message,
+           and they use them to send a message.
+
+        4. The WhisperKey servers send the encrypted message to your browser.
+        5. Your browser uses the private key stored in local storage to decrypt
+           the message and display it on your screen.
+
+
+        ## When sending messages
+
+        1. You input the magic words that someone gave you.
+        2. The WhisperKey servers provide you with the public key associated with
+           those magic words.
+        3. You type your message and your browser encrypts it using the public key
+           WhisperKey provided it.
+        4. Your browser sends the encrypted message to WhisperKey. WhisperKey
+           associates it with the user it is intended for so that they will see it
+           in their list of messages.
+
+        ## Security limitations
+
+         - Your data is safe from snooping and from us. But you must be sure that you
+         are using the correct magic words for the person you want to send to. If you
+         use the wrong magic words, your message might go to the wrong person.
+         - Performing cryptography in Javascript [has
+         limitations](http://www.matasano.com/articles/javascript-cryptography/).  In
+         this case many of those limitations are mitigated by using public-key
+         cryptography, but you should perform your own validations to ensure that no
+         one has tampered with WhisperKey’s Javascript between our servers and your
+         computer.
+         - Your private key is stored unencrypted in your browser's local storage.
+         If someone gains access to your computer, they will be able to read any
+         messages sent to your session. This can be mitigated by always signing out
+         when you have finished using WhisperKey. WhisperKey will also expire your
+         session after 24 hours of it first being used).
+         - Need something more secure? Try [GnuPG](http://gnupg.org/).
+
+        ## Technical details
+
+        WhisperKey uses a combination of [RSA][] and [AES][] to achieve the desired
+        results. RSA has an inherent character limitation based on the length
+        of the key, and WhisperKey uses a relatively short RSA key length
+        (1024 bits). To stop you being limited to 117 characters your message
+        is first encrypted with AES-256 using a randomly generated passphrase.
+        This passphrase is then encrypted with your public key and the two
+        ciphertexts are sent to the WhisperKey servers. When the message is
+        decrypted the process is reversed: the receiver’s browser decrypts the
+        AES passphrase and then uses this to decrypt the original message.
+
+        This is a standard procedure using industry standards and similar
+        methods are used in [SSL][], [OpenPGP][] and others.
+
+        [RSA]: https://en.wikipedia.org/wiki/RSA_%28algorithm%29
+        [AES]: https://en.wikipedia.org/wiki/Advanced_Encryption_Standard_process
+        [SSL]: http://tools.ietf.org/html/rfc5246 
+        [OpenPGP]: https://en.wikipedia.org/wiki/OpenPGP
+
+        ## Concerns?
+
+        If you have a security query please contact us on our priority security
+        email address: 
+        [security@pixielabs.co.uk](mailto:security@pixielabs.co.uk?subject=WhisperKey query).
+
+
+        [local storage]: https://en.wikipedia.org/wiki/Web_storage

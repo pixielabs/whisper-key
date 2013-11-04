@@ -1,0 +1,25 @@
+#existing-or-new.container
+  .row
+    .col-md-8.col-md-offset-2
+      %p.lead 
+        You already have a private key stored in your browser which is
+        associated with the magic words:
+        %br/ 
+        - current_user.magic_words.split(" ").each do |word|
+          %span.magic-word #{word}
+
+      %p.lead
+        These magic words will expire in
+        = succeed "." do
+          = time_ago_in_words(current_user.expires_at)
+  .row
+    .col-md-8.col-md-offset-2
+      %p.lead.question 
+        What would you like to do?
+      
+      .row
+        .col-md-6
+          = link_to "Continue with these magic words", messages_path, class: "btn btn-info"
+        .col-md-6
+          = link_to "Generate new magic words", {controller: "users", action: "destroy", restart: true}, method: :delete, data: {confirm: "Are you sure? You will NOT be able to access any more messages sent to this set of magic words."}, class: "btn btn-primary"
+

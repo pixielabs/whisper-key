@@ -1,0 +1,10 @@
+#deleting-key.container
+  .row
+    .col-md-8.col-md-offset-2
+      %p.lead Deleting your private key 
+
+:javascript
+  $(function() {
+    localStorage.setItem("privatekey", "");
+    window.location = "#{params[:restart] ? new_user_path : root_path}";
+  });

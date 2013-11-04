@@ -1,0 +1,29 @@
+defaults: &defaults
+  user_expiry: <%= 24.hours %>
+
+  magic_words:
+    number: 2
+    seed: 80262
+    prime: 131249
+
+  opensourced: true
+
+  ga_tag: 'UA-xxxxxx-x'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+  opensourced: false
+
+  magic_words:
+    number: <%= ENV["MAGIC_WORDS_NUMBER"] %>
+    seed: <%= ENV["MAGIC_WORDS_SEED"] %>
+    prime: <%= ENV["MAGIC_WORDS_PRIME"] %>
+
+  ga_tag: <%= ENV["GA_TAG"] %>

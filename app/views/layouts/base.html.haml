@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %title WhisperKey
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+    - unless Rails.env.test?
+      %script{src: "//use.typekit.net/rud0qkt.js"}
+      :javascript
+        try{Typekit.load();}catch(e){}
+  
+  %body
+    - if alert
+      .alert.alert-danger= alert
+    - if notice
+      .alert.alert-info= notice
+
+    = yield :top_of_body
+
+    = yield
+    
+    = render "application/ga"

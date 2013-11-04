@@ -1,0 +1,50 @@
+#new-message.container
+  .row
+    .col-md-8.col-md-offset-2
+      %h2 
+        Your recipient has the magic words
+        %br/ 
+        - current_user.magic_words.split(" ").each do |word|
+          %span.magic-word #{word}
+  .row
+    .col-md-8.col-md-offset-2
+      %h3 Your message
+      .form-group
+        %textarea.form-control#message{rows: 5}
+      .form-group
+        %button#encrypt.btn.btn-lg.btn-primary Encrypt this message
+  
+  .row
+    .col-md-8.col-md-offset-2
+
+      = form_for @message do |f|
+        = f.hidden_field :user_id
+        = f.hidden_field :encrypted_key
+        
+        .form-group
+          = f.text_area :encrypted_data, rows: 5, readonly: "readonly", class: "form-control"
+        
+        .form-group
+          %button.btn.btn-lg.btn-primary{type: "submit"} Send encrypted message
+
+:javascript
+  $(function() {
+
+    // Generate AES key
+    var aesKey = new Array(80),
+        rng = new SecureRandom();
+    rng.nextBytes(aesKey);
+    aesKey = B64.encode(_.map(aesKey, String.fromCharCode).join("")).slice(0,117);
+
+    // Encrypt with the public key of the recipient & set in form
+    var crypt = new JSEncrypt();
+    crypt.setPublicKey("#{j @user.public_key}");
+    $("#message_encrypted_key").val(crypt.encrypt(aesKey));
+
+    $("#encrypt").click(function(e) {
+      $("#message_encrypted_data").val(CryptoJS.AES.encrypt($("#message").val(), aesKey));
+
+      e.preventDefault();
+    });
+
+  });
