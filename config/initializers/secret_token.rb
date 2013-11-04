@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-WhisperKey::Application.config.secret_key_base = 'b6395afe6ed925f845ba974e39127ed12e1dd0e26779cbf6bfb2eed5b12ee0c2b95baa960b68d16126c3a5e76cc79b03945da7523c44e03d523464603665bd42'
+WhisperKey::Application.config.secret_key_base = ENV["SECRET_KEY_BASE"] || 'b6395afe6ed925f845ba974e39127ed12e1dd0e26779cbf6bfb2eed5b12ee0c2b95baa960b68d16126c3a5e76cc79b03945da7523c44e03d523464603665bd42'
