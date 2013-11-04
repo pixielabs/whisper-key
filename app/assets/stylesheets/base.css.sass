@@ -1,11 +1,11 @@
 /*
  * Typography
  */ 
-$brandFont:     "courier-prime"
+$brandFont:     "courier-prime", monospace
 $brandNormal:   400
 $brandBold:     700
 
-$copyFont:      "freight-sans-pro"
+$copyFont:      "freight-sans-pro", "Helvetica Neue", sans-serif
 $copyBook:      400
 $copyMedium:    500
 $copySemibold:  600
@@ -32,17 +32,26 @@ $headings-font-family:    $copyFont
 $headings-font-weight:    $copySemibold
 $brand-primary:           $brandShade3
 $brand-info:              $brandShade2
-@import bootstrap
 
+// Bootstrap MQ values
+$screen-xs-max: 767px
+$screen-sm-min: 768px
+$screen-sm-max: 991px
+$screen-md-min: 992px
+$screen-md-max: 1199px
+$screen-lg-min: 1200px
+
+
+/*
+ * Libs
+ */
+@import bootstrap
 @import bourbon
+
 
 /*
  *  Global
  */
-.wf-loading
-  h1, h2, h3, h4, h5, h6, p, .btn
-    visibility: hidden
-
 .magic-word
   background-color: #ddd
   border-radius: 0.2em
@@ -58,22 +67,29 @@ $brand-info:              $brandShade2
  */
 .jumbotron
   background-color: $brandShade1
-  
-  .logo
-    color: $brandWhite
+  position: relative
+  margin-bottom: 0
+
+  .logo-marq
+    position: absolute  
+    max-width: 100%
+    width: 100%
+    
+
+  .logo-type
+    color: white
   .lead
     color: $brandShade3
+    padding-left: 0.2em
 
-.logo
+.logo-type
   font-weight: $copySemibold
   .domain
     font-weight: $copyMedium
     color: $brandShade2 !important
 
 #journey-cta
-  text-align: center
-  padding: 1em 0
-  position: relative
+  clear: left
 
 #pixies
   opacity: 0.7
@@ -81,6 +97,68 @@ $brand-info:              $brandShade2
 .alert
   margin-bottom: 0
   border-radius: 0
+
+
+@media (max-width: $screen-xs-max)
+  .jumbotron
+    padding: 0
+
+    .logo-type
+      font-size: 32px
+    .lead
+      font-size: 20px
+      margin-bottom: 0.5em
+
+    .logo-marq
+      width: 22px
+      top: 1em
+      left: 0.7em
+    
+    .hero-type
+      margin-left: 1.35em
+  
+  #journey-cta
+    text-align: center
+
+
+@media (min-width: $screen-sm-min)
+  .jumbotron
+    padding-top: 0.5em
+
+    .logo-marq
+      width: 72px
+      top: 1.5em
+
+    .hero-type
+      margin-left: 3.4em
+  
+  #journey-cta  
+    margin-left: 3.4em
+    .btn
+      margin-right: 0.5em
+
+@media (min-width: $screen-md-min)
+  .jumbotron
+    margin-bottom: 1em
+    padding: 1em 1em 2em
+
+    .hero-icon
+      text-align: center
+    .logo-marq
+      position: relative
+      width: 88px
+      left: auto
+    .hero-type
+      margin-left: 0
+  
+  #journey-cta
+    margin-left: 0
+    .btn
+      font-size: 28px
+
+
+
+
 
 /*
  *  Navbar
