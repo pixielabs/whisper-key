@@ -2,13 +2,15 @@ require 'spec_helper'
 
 describe "EndToEnd", js: true do
   it "works!" do
-    Capybara.default_wait_time = 10
+    Capybara.default_wait_time = 20
+    Capybara.session_name = "receiver"
     visit root_path
     click_link "Receive a secure message"
 
     expect(page).to have_text("Your magic words are")
     magic_words = page.all(".magic-word").map{|w| w.text}.join(" ")
 
+    Capybara.session_name = "sender"
     visit root_path
     click_link "Send a secure message"
     fill_in("magic words", with: magic_words)
@@ -20,6 +22,7 @@ describe "EndToEnd", js: true do
     click_button "Encrypt this message"
     click_button "Send encrypted message"
 
+    Capybara.session_name = "receiver"
     visit root_path
     click_link "Receive a secure message"
     click_link "Continue with these magic words"

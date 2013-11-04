@@ -4,7 +4,7 @@
       %h2 
         Your recipient has the magic words
         %br/ 
-        - current_user.magic_words.split(" ").each do |word|
+        - @user.magic_words.split(" ").each do |word|
           %span.magic-word #{word}
   .row
     .col-md-8.col-md-offset-2
