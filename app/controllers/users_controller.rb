@@ -21,9 +21,9 @@ class UsersController < ApplicationController
 
     user = User.find_by(magic_words: params[:magic_words])
     if user and !user.expired?
-      redirect_to new_message_path(user_id: user)
+      redirect_to new_message_path(magic_words: user.magic_words)
     else
-      redirect_to users_path, alert: "Couldn't find any messages with those magic words. Maybe they have expired? Please check with your sender."
+      redirect_to users_path, alert: "Couldn't find anyone with those magic words. Maybe they have expired? Please check with your sender."
     end
   end
 

@@ -32,21 +32,20 @@
 
         ## Security limitations
 
-         - Your data is safe from snooping and from us. But you must be sure that you
-         are using the correct magic words for the person you want to send to. If you
-         use the wrong magic words, your message might go to the wrong person.
+         - We have taken efforts to ensure your data is safe from snooping and
+         from us. But you must be sure that you are using the correct magic
+         words for the person you want to send to. If you use the wrong magic
+         words, your message might go to the wrong person.
          - Performing cryptography in Javascript [has
-         limitations](http://www.matasano.com/articles/javascript-cryptography/).  In
-         this case many of those limitations are mitigated by using public-key
-         cryptography, but you should perform your own validations to ensure that no
-         one has tampered with WhisperKey’s Javascript between our servers and your
-         computer.
+         limitations](http://www.matasano.com/articles/javascript-cryptography/).
+         You should perform your own validations to ensure that no one has
+         tampered with WhisperKey’s Javascript between our servers and your
+         computer and that WhisperKey is right for you.
          - Your private key is stored unencrypted in your browser's local storage.
          If someone gains access to your computer, they will be able to read any
          messages sent to your session. This can be mitigated by always signing out
          when you have finished using WhisperKey. WhisperKey will also expire your
          session after 24 hours of it first being used).
-         - Need something more secure? Try [GnuPG](http://gnupg.org/).
 
         ## Technical details
 
@@ -74,5 +73,8 @@
         email address: 
         [security@pixielabs.co.uk](mailto:security@pixielabs.co.uk?subject=WhisperKey query).
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
         [local storage]: https://en.wikipedia.org/wiki/Web_storage

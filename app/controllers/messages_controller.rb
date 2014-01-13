@@ -18,7 +18,11 @@ class MessagesController < ApplicationController
   # Public: Form for creating a new message, should have a user ID by this
   # point, because we'll need to supply the user with the public key.
   def new
-    @user = User.find params[:user_id]
+    redirect_to root_url, alert: "Try searching again" and return if params[:user_id]
+
+    @user = User.find_by magic_words: params[:magic_words]
+    redirect_to users_path, alert: "Couldn't find anyone with those magic words. Maybe they have expired?" and return unless @user
+
     @message = @user.messages.build
   end
 
@@ -34,8 +38,16 @@ class MessagesController < ApplicationController
         render text: "You are no longer receiving messages for these magic words"
       end
     else
+<<<<<<< HEAD
       authorized!
       render
+=======
+      if current_user
+        render
+      else
+        redirect_to root_path, alert: "You don't have any magic words"
+      end
+>>>>>>> master
     end
   end
 
