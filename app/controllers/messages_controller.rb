@@ -38,16 +38,11 @@ class MessagesController < ApplicationController
         render text: "You are no longer receiving messages for these magic words"
       end
     else
-<<<<<<< HEAD
-      authorized!
-      render
-=======
       if current_user
         render
       else
         redirect_to root_path, alert: "You don't have any magic words"
       end
->>>>>>> master
     end
   end
 
