@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "EndToEnd", js: true do
   it "works!" do
-    Capybara.default_wait_time = 20
+    Capybara.default_max_wait_time = 20
     Capybara.session_name = "receiver"
     visit root_path
     click_link "Receive a secure message"

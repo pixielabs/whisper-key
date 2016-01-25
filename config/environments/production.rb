@@ -77,14 +77,4 @@ WhisperKey::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  # Deliver emails via Amazon SES
-  config.action_mailer.delivery_method = :amazon_ses if ENV["AMAZON_ACCESS_KEY_ID"]
-
-  config.middleware.use ExceptionNotification::Rack,
-    :email => {
-     :email_prefix => "[WhisperKey] ",
-     :sender_address => ENV["EXCEPTIONS_EMAIL_ADDRESS"],
-     :exception_recipients => ENV["EXCEPTIONS_RECIPIENTS"]
-    }
 end

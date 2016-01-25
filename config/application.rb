@@ -26,5 +26,8 @@ module WhisperKey
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # Use hybrid cookie serializer as per Rails 4.0->4.1 upgrade docs.
+    Rails.application.config.action_dispatch.cookies_serializer = :hybrid
   end
 end
