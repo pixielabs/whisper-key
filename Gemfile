@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.2.0'
 gem 'pg'
 gem 'jbuilder', '~> 1.2'
 gem 'passenger'
