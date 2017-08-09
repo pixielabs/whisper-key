@@ -28,7 +28,7 @@
     });
 
     clipboard.on('error', function(e) {
-      $('#js-clipboard').html('Press Ctrl+C to copy');
+      $('#js-clipboard').html('Sorry, something went wrong!');
     });
   });
 
