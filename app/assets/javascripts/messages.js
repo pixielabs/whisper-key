@@ -19,6 +19,20 @@
   };
 
   $(function() {
+    var clipboard = new Clipboard('#js-clipboard');
+
+    clipboard.on('success', function(e) {
+      $('#js-clipboard').html('Copied!');
+
+      e.clearSelection();
+    });
+
+    clipboard.on('error', function(e) {
+      $('#js-clipboard').html('Press Ctrl+C to copy');
+    });
+  });
+
+  $(function() {
 
     $("#show-public-key").click(function(e) {
       e.preventDefault();
