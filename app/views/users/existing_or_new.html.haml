@@ -7,6 +7,7 @@
         %br/ 
         - current_user.magic_words.split(" ").each do |word|
           %span.magic-word #{word}
+        %button#js-clipboard.btn{data: {clipboard_text: current_user.magic_words}} Copy to clipboard
 
       %p.lead
         These magic words will expire in

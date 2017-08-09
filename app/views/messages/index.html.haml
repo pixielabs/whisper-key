@@ -13,9 +13,11 @@
     .col-md-6.col-md-offset-1
       %h2.has-magic-words
         Your magic words are 
-        %br/ 
+        %br/
         - current_user.magic_words.split(" ").each do |word|
           %span.magic-word= word
+
+        %button#js-clipboard.btn{data: {clipboard_text: current_user.magic_words} } Copy to clipboard
       
       %p.lead 
         Tell the sender your magic words for them to be able to send messages to you.
