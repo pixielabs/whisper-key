@@ -1,9 +1,10 @@
 require 'spec_helper'
 
-describe "EndToEnd", js: true do
+describe "The end to end journey", js: true, type: :feature do
   it "works!" do
     Capybara.default_max_wait_time = 20
     Capybara.session_name = "receiver"
+    Capybara.server = :webrick
     visit root_path
     click_link "Receive a secure message"
 
