@@ -143,12 +143,13 @@ GEM
       mini_mime (>= 0.1.1)
     method_source (0.9.0)
     mini_mime (1.0.1)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.8.4)
     minitest (5.11.3)
     multi_json (1.13.1)
     nenv (0.3.0)
-    nokogiri (1.10.5)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.15.4)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -160,6 +161,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
+    racc (1.7.1)
     rack (1.6.11)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -294,7 +296,7 @@ DEPENDENCIES
   yappconfig
 
 RUBY VERSION
-   ruby 2.5.5p157
+   ruby 2.7.8p225
 
 BUNDLED WITH
-   1.16.6
+   1.17.3
